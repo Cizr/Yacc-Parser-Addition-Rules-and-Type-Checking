@@ -1,27 +1,3 @@
-S → def Type id = E { print(E.type) }
-E → E1 + E2 { if (E1.type == "int" && E2.type == "float") print("Type mismatch error") }
-E → Val { print(Val.type) }
-Val → nb.nb { type = "float" }
-Val → nb { type = "int" }
-Type → int { print("int") }
-Type → float { print("float") }
-
-
-
-
-
-
-
-S → def Type id = E { if (Type == "int" && E.type == "float") print("Type mismatch error") }
-E → E + E { type = "int" if (E1.type == "int" && E2.type == "int") else "float" }
-E → Val { type = Val.type }
-Val → nb.nb { type = "float" }
-Val → nb { type = "int" }
-Type → int { print("int") }
-Type → float { print("float") }
-
-
-
 
 S → def Type id = E
 E → E + E | Val
@@ -30,10 +6,18 @@ Type → int | float
 
 Grammar Rules with Attributes
 
-S → def Type id = E { if (Type.type == "int" && E.type == "float") print("Type mismatch error"); }
+S → def Type id = E { if (Type.type == "int" && E.type == "float") print("mismatch "); }
 E → E1 + E2 { E.type = "float" if (E1.type == "float" || E2.type == "float") else "int"; }
 E → Val { E.type = Val.type; }
 Val → nb.nb { Val.type = "float"; }
 Val → nb { Val.type = "int"; }
 Type → int { Type.type = "int"; }
 Type → float { Type.type = "float"; }
+
+
+A intermediate language for our grammar
+
+PUSH value  
+ADD         
+ASSIGN_INT var 
+ASSIGN_FLOAT var 
